@@ -66,7 +66,8 @@ Frameworks, Languages, Libraries, APIs, etc to be used are as follows:
 *^items subject to change without notice*
 
 # 2. Functionality
-The following section in its current form is meant to 
+The following section in its current form is meant to theorize and outline the functionality of this project from both student and tutor perspectives.
+
 ### i. Students
 #### a. registration & login
 The first thing 
