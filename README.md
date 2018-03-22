@@ -1,2 +1,2 @@
-# capstone2018: StudyBuddy
+# StudyBuddy
 capstone proposal, drafts, &amp; info
