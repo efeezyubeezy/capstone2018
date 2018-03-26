@@ -2,19 +2,8 @@
 by eric talbot
 
 # 1. Overview:
-
-### i. Theory & Ethics: "Making Knowledge Accessible"
+### i. Basics
 The goal of StudyBuddy is to create both a directory and interface for users to instantly locate and connect safely with qualified private tutors in their area at any time, and at an affordable cost.
-
-At any point in history, anywhere in the world, education exists both an essential resource to the populace and also a closely guarded tool of the aristocracy and associated governing bodies. We all know the famous idiom, "knowledge is power," and we are all familiar with the dangers of a model that equates knowledge directly to "power" as we know it. It manifests itself as de facto segregated neighborhoods, public school systems that consistently fail their students while private school tuitions escalate to astronomically higher dollar amounts, unemployment statistics that approach economic depression levels, a rising poverty line with an equally rising cost of living, a lack of economic mobility, unprecedented levels of student debt- mass produced by the university-industrial-complex that will in most cases, either be defaulted on or sentence their borrowers to a lifetime of financial duress, and the list goes on.
-
-Education is by no means a miracle, but its impact and effects can always be miraculous. This inherent potential of an education to provide both context for existence and opportunities to make the most of it is the premise upon which warfare tactics are often built (i.e. espionage, counterespionage, "intelligence departments"), and it has often been the only real difference between what is termed "magic" and what is termed "science" (in short: magic is just science we haven't learned yet).
-
-In exploring this dynamic, I aim to change the narrative from "knowledge is power" to "knowledge is empowerment." Knowledge does not and should not bestow upon an individual the ability or the right to wield unequal amounts of power over others, but it does and should grant one the ability and power to elevate and improve their own lives and the lives of others in a way that has very tangible effects. Know better, do better. Since the "knowledge is power" ethos of the previous few centuries has only gotten us to where we are now, we need a different model. Knowledge as power has only brought us to the point of stratifying access to education and information along class (and subsequently every other set of relevant) lines. Conversely, since nothing occurs in a vacuum, a model of knowledge as empowerment absolutely must come with the condition that knowledge is accessible- bringing us to my macro-level goal and motto: "make knowledge accessible!"
-
-In the real world, and on the ground level: No one cares how smart you are if they can't understand what you're saying. And if you can't explain your knowledge so people can understand and learn from it, then how smart are you really? It's not what we know that is important, but what we do with that knowledge and how we apply it.
-
-##### "The quality of our thoughts is bordered on all sides by our facility with language." ~J. Michael Straczynski
 
 ### ii. Features, Frameworks, Fun
 #### a. Features
@@ -56,10 +45,8 @@ Frameworks, Languages, Libraries, APIs, etc to be used are as follows:
 - django
 - jQuery
 - vue.js
-- node.js
-- react
-- angular
 - wyzant app API
+- facebook API for login w facebook?
 - google maps geo-locator
 - others TBD
 
@@ -69,8 +56,84 @@ Frameworks, Languages, Libraries, APIs, etc to be used are as follows:
 The following section in its current form is meant to theorize and outline the functionality of this project from both student and tutor perspectives.
 
 ### i. Students
-#### a. registration & login
-The first thing 
+#### a. Registration & Login
+1. User will be brought to landing page, which will have a registration/ login field and will be able to login using their email address or facebook.
+2. User will then be asked for some basic but pertinent information (i.e. areas of study, location, age, name, online or in person lessons, reasons for seeking tutoring in subject etc.) data will be saved to user profile which may be edited later.
+3. Once user info is entered and saved, they can continue filling in other info on their profile (i.e. hobbies, interests, bio, etc). This data will also be saved.
+4. User will be brought to their 'Dashboard,' which will display only the users most relevant information: Profile, Lessons, Subjects, Tutors, Calendar, Messages. User will navigate from here.
+
+#### b. Dashboard
+So far, the dashboard will consist of 6 fields: Profile, Lessons, Subjects, Tutors, Calendar, and Messages.
+- **Profile:** When clicked, will bring the user to their profile, where they can add/ update/ delete information.
+- **Lessons:** Record of the users recent lessons organized chronologically, with date/ time, subject, tutor, and duration of the lesson.
+- **Subjects:** Subjects that the user has already expressed interest in will be saved here for future reference. User can also search and add more subjects to their list from here. Each subject tab will redirect to the Tutor selector for that particular subject.
+- **Tutors:** Will display a list of tutors & bios that the user has worked with by date/time, frequency & duration. User will be able to search tutors by subject, price, distance, availability, etc. and add to a list of prospectives to compare.
+- **Calendar:** Standard calendar for the user that will sync with the tutors calendar upon confirmation, update, or deletion of an appointment or scheduled lesson.
+- **Messages:** Messenger for student and teacher to correspond.
+
 ### ii. Tutors
-#### a. registration & login
-### iii. General
+#### a. Registration & Login
+This part (assuming I get to it) will be similar to the student-side R & L but a bit different in a few ways. For one, tutors wont need a tutor tab on their end, but a student one. Secondly, The registration information being requested will have to authenticate their employment and/ or teaching experience & credentials. Tutors without formal credentials will have to formally request that an exception be made. The subjects tab will also work a bit differently as well, and wil be used to track what subjects a particular tutor is interested and/ or available to teach. They will be asked to present the necessary credentials and upon verification, the subject will be added to their list of available ones to tutor.
+
+#### b. Dashboard
+The Dashboard for Tutors will consist of the following fields: Profile, Lessons, Subjects, Students, Calendar, and Messages.
+- **Profile:** When clicked, will bring the user to their profile, where they can add/ update/ delete information.
+- **Lessons:** Record of the tutors recent lessons organized chronologically, with date/ time, subject, student, and duration of the lesson.
+- **Subjects:** List of subjects that the tutor is qualified to and interested in teaching. Can be changed with verification & approval. 
+- **Students:** List of students under ones tutelage & bios, sorted by name/ subject/ frequency etc.
+- **Calendar:** Standard calendar for the tutor that will sync with the users calendar upon confirmation, update, or deletion of an appointment or scheduled lesson.
+- **Messages:** Same as student.
+
+### iii. General Notes
+Ideally, I'd like to try to make this an SPA, but if that cant work out, I want to try and emphasize very minimalist design for this project, both aesthetically and functionally for user-friendliness and ease of interpretation. I want to present all relevant and desired information to the user as simply and as clearly as possible without overwhelming them, but I also want them to get the most out of the application with minimal usage- because as always, time is of the essence.
+
+# 3. Data Model
+Below is a list of all of the data fields that will need to be stored and used for students and tutors in their experience of the application:
+
+**Students & Tutors**
+
+- User
+- User Status (Student/ Tutor)
+- DOB (mm/dd/yyyy)
+- Phone Number
+- E- Mail Address
+- Address
+- City
+- State
+- Country
+- Zip
+- Bio
+- Sex
+- Gender
+- Race/ Ethnicity
+- Profile Photo
+- Current/ Highest Level of Education
+- Employment Status
+- Subject/s of Study/ Interest
+- Availability
+- Payment Information
+- Lessons Scheduled: Date/ Time, Tutor/ Student, Price, Duration, etc
+- Lessons Taken (completed):  Date/ Time, Tutor/ Student, Price, Duration, etc
+- Message History??
+- Online/ Live Tutor Preference
+- Private/ Public Live Tutor Meeting Preference
+- Student Max Budget/ Tutor Min Compensation Price
+- *other relevant information im probably missing*
+
+# 4. Schedule
+The tentative schedule for this seemingly over-ambitious project of mine:
+
+**1. Week One:**
+- Research
+- Build back-end in Django and construct database, data relations, and server communications for a student user to register/ log in. Make sure all fields are accessible and can store data as intended
+- Once user is able to log in and all database tables are constructed, build out the back end of the Dashboard.
+
+**2. Week Two:**
+- Finish & finalize dashboard operations, forms, & data exchanges. Fix errors & work out kinks.
+- Work on javascript operations & functionality & presentation
+- Start working on CSS/ HTML
+
+**3. Week Three:**
+- Finish & polish everything from top to bottom. Add additional features if time allows.
+- Test & Fix Errors.
+- Test & Fix Errors again.

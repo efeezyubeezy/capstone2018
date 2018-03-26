@@ -3,11 +3,17 @@ capstone proposal, drafts, &amp; info
 
 ### Contents
 1. Overview
-   - i. Theory & Ethics
+   - i. Basics
    - ii. Features & Frameworks
      - a. Features
      - b. Frameworks & Fun
 2. Functionality
    - i. Students
+     - a. Registration & Login
+     - b. Dashboard
    - ii. Tutors
-   - iii. General
+     - a. Registration & Login
+     - b. Dashboard
+   - iii. General Notes
+3. Data Model
+4. Schedule
