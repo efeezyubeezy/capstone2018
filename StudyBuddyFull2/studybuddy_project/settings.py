@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'hf_ghb3gut$3dpmm*epxh36s8emngr(gt(gqsmwz*x@g=cd!=r'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,8 +38,8 @@ INSTALLED_APPS = [
 	'phonenumber_field',
 	'localflavor',
 	'crispy_forms',
-	'accounts.apps.AccountsConfig',
-	'pages.apps.PagesConfig',
+	'accounts',
+	'pages',
 ]
 
 MIDDLEWARE = [
@@ -139,9 +139,6 @@ MEDIA_URL = '/uploaded_files/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # 'django.core.mail.backends.console.EmailBackend'  <-console test
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'efeezyubeezy'
-EMAIL_HOST_PASSWORD = 'Joker024!'
+
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
-
