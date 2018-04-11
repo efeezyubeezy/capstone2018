@@ -33,6 +33,7 @@ class CustomUser(AbstractUser):
 class Profile(models.Model):
 	objects = CustomUserManager()
 
+	# username = models.ForeignKey('auth.User', on_delete=models.CASCADE,)
 	username = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
 
 	# first_name = models.CharField(blank=True, max_length=50, default='')
@@ -73,20 +74,20 @@ class Profile(models.Model):
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_user_profile(sender, instance, created, **kwargs):
 	if created:
-		Profile.objects.create(username=instance)
+		Profile.objects.create(user=instance)
 	if not created:
 		return
-	Profile.objects.create(username=instance)
+	Profile.objects.create(user=instance)
 	post_save.connect(create_user_profile, sender=settings.AUTH_USER_MODEL)
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL, dispatch_uid='save_new_user_profile')
 def save_user_profile(sender, instance, created, **kwargs):
-	username = instance
+	user = instance
 	if created:
-		profile = Profile(username=username)
+		profile = Profile(user=user)
 		profile.save()
-	# instance.profile.save()
+	instance.profile.save()
 
 
 users = CustomUser.objects.all().select_related('profile')
