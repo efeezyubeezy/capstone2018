@@ -73,12 +73,20 @@ class Profile(models.Model):
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_user_profile(sender, instance, created, **kwargs):
 	if created:
-		Profile.objects.create(user=instance)
+		Profile.objects.create(username=instance)
+	if not created:
+		return
+	Profile.objects.create(username=instance)
+	post_save.connect(create_user_profile, sender=settings.AUTH_USER_MODEL)
 
 
-@receiver(post_save, sender=settings.AUTH_USER_MODEL)
-def save_user_profile(sender, instance, **kwargs):
-	instance.profile.save()
+@receiver(post_save, sender=settings.AUTH_USER_MODEL, dispatch_uid='save_new_user_profile')
+def save_user_profile(sender, instance, created, **kwargs):
+	username = instance
+	if created:
+		profile = Profile(username=username)
+		profile.save()
+	# instance.profile.save()
 
 
 users = CustomUser.objects.all().select_related('profile')

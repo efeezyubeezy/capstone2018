@@ -8,19 +8,18 @@ from .models import CustomUser, Profile
 
 
 class CustomUserInline(admin.StackedInline):
-	model = CustomUser
+	model = Profile
 	can_delete = False
 	verbose_name_plural = 'Profile'
-	fk_name = settings.AUTH_USER_MODEL
+	# fk_name = settings.AUTH_USER_MODEL
 	fields = ['accounts.CustomUser', ]
 
 
 class CustomUserAdmin(UserAdmin):
-	inlines = [CustomUserInline, ]
+	inlines = (CustomUserInline, )
 	model = CustomUser, Profile
 	add_form = CustomUserCreationForm
 	form = CustomUserChangeForm
-	# fields = (settings.AUTH_USER_MODEL,)
 	list_display = ('username', 'email',
 	                # 'usr_stat', 'first_name', 'mid_name', 'last_name',
 	                # 'dob', 'phone_number', 'address', 'country',
