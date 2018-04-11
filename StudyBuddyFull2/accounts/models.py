@@ -33,12 +33,11 @@ class CustomUser(AbstractUser):
 class Profile(models.Model):
 	objects = CustomUserManager()
 
-	# username = models.ForeignKey('auth.User', on_delete=models.CASCADE,)
 	username = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
 
-	# first_name = models.CharField(blank=True, max_length=50, default='')
+	first_name = models.CharField(blank=True, max_length=50, default='')
 	mid_name = models.CharField(blank=True, max_length=50, default='')
-	# last_name = models.CharField(blank=True, max_length=50, default='')
+	last_name = models.CharField(blank=True, max_length=50, default='')
 	dob = models.DateField(blank=True, default=date.today)
 	usr_stat = models.CharField(blank=True, max_length=20, default='')
 	phone_number = PhoneNumberField(blank=True, max_length=30, default='')
