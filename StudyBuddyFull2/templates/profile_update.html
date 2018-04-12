@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}update profile{% endblock %}
+
+{% block content %}
+
+<h2>{{ user.get_full_name }}</h2>
+
+{% if error_message %}
+	<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<h2 class="flow-text">update your information</h2>
+  <form action="." method="POST" class="padding">
+	  {% csrf_token %}
+	  {{ form.as_p }}
+      <button type="submit" class="btn btn-success">save!</button>
+</form>
+
+
+{% endblock %}
