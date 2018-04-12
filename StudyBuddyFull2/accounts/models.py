@@ -59,9 +59,9 @@ class Profile(models.Model):
 	def get_image_path(self, filename):
 		return os.path.join('images', str(self.pk), filename)
 
-	profile_image = models.FileField(verbose_name='profile image',
+	profile_image = models.ImageField(verbose_name='profile image',
 	                                 upload_to=get_image_path, blank=True,
-	                                 null=True)
+	                                 default=None)
 
 	def __str__(self):
 		return self.user.username

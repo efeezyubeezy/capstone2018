@@ -122,34 +122,42 @@ class RegistrationForm(forms.ModelForm):
 	                        choices=CLASSROOM,
 	                        widget=forms.Select(attrs={'class': 'regDropDown'}))
 
-	def clean_profile_image(self):
-		profile_image = self.cleaned_data['profile_image']
+	# def clean_profile_image(self):
+	# 	profile_image = self.cleaned_data['profile_image']
+	#
+	# 	try:
+	# 		w, h = get_image_dimensions(profile_image)
+	#
+	# 		max_width = max_height = 100
+	# 		if w > max_width or h > max_height:
+	# 			raise forms.ValidationError(
+	# 				u'please use an image that is '
+	# 				'%s x %s pixels or smaller.'
+	# 				% (max_width, max_height))
+	#
+	# 		main, sub = profile_image.content_type.split('/')
+	# 		if not (main == 'image' and sub in ['jpeg', 'pjpeg',
+	# 		                                    'gif', 'png']):
+	# 			raise forms.ValidationError(
+	# 				u'please use a jpeg, GIF, or PNG image.')
+	#
+	# 		if len(profile_image) > (20 * 1024):
+	# 			raise forms.ValidationError(
+	# 				u'avatar file size may not exceed 20k.')
+	#
+	# 	except AttributeError:
+	# 		pass
+	#
+	# 	return profile_image
 
-		try:
-			w, h = get_image_dimensions(profile_image)
-
-			max_width = max_height = 100
-			if w > max_width or h > max_height:
-				raise forms.ValidationError(
-					u'please use an image that is '
-					'%s x %s pixels or smaller.'
-					% (max_width, max_height))
-
-			main, sub = profile_image.content_type.split('/')
-			if not (main == 'image' and sub in ['jpeg', 'pjpeg',
-			                                    'gif', 'png']):
-				raise forms.ValidationError(
-					u'please use a jpeg, GIF, or PNG image.')
-
-			if len(profile_image) > (20 * 1024):
-				raise forms.ValidationError(
-					u'avatar file size may not exceed 20k.')
-
-		except AttributeError:
-			pass
-
-		return profile_image
-
-	profile_image = forms.FileField(label='profile image', widget=ClearableFileInput)
+	profile_image = forms.ImageField(label='profile image', widget=ClearableFileInput, required=False)
 
 	# availability = want to make a calendar type of deal so people can pick available days & then times for those days???
+
+	def save(self, user=None):
+		user_profile = super(RegistrationForm, self).save(commit=False)
+		if user:
+			user_profile.user = user
+		user_profile.save()
+		return user_profile
+
