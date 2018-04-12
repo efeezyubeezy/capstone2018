@@ -123,7 +123,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 CUSTOM_USER_MODEL = 'accounts.CustomUser'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -138,8 +138,9 @@ MEDIA_URL = '/uploaded_files/'
 # email stuff
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # 'django.core.mail.backends.console.EmailBackend'  <-console test
-EMAIL_HOST = 'smtp.sendgrid.net'
-
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

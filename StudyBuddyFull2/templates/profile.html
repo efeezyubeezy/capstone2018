@@ -15,46 +15,46 @@
 	<button type="submit">save changes</button>
 </form>
 
-{#<ul>#}
-{#	<li>username: {{ user.username }}</li>#}
-{#	<li>first name: {{ user.profile.first_name }}</li>#}
-{#	<li>middle name: {{ user.profile.mid_name }}</li>#}
-{#	<li>last name: {{ user.profile.last_name }}</li>#}
-{#	<li>dob: {{ user.profile.dob }}</li>#}
-{#	<li>status: {{ user.profile.usr_stat }}</li>#}
-{#	<li>phone number: {{ user.profile.phone_number }}</li>#}
-{#	<li>address: {{ user.profile.address }}</li>#}
-{#	<li>country: {{ user.profile.country }}</li>#}
-{#	<li>state: {{ user.profile.state }}</li>#}
-{#	<li>city: {{ user.profile.city }}</li>#}
-{#	<li>zip code: {{ user.profile.zip_code }}</li>#}
-{#	<li>sex: {{ user.profile.sex }}</li>#}
-{#	<li>race/ ethnicity: {{ user.profile.race_ethnicity }}</li>#}
-{#	<li>employment: {{ user.profile.employment }}</li>#}
-{#	<li>education: {{ user.profile.education }}</li>#}
-{#	<li>degree: {{ user.profile.degree }}</li>#}
-{#	<li>university: {{ user.profile.university }}</li>#}
-{#	<li>live/ online: {{ user.profile.live_online }}</li>#}
-{#	<li>classroom: {{ user.profile.classroom }}</li>#}
-{#	<li></li>#}
-{#	<li></li>#}
-{#</ul>#}
+<ul>
+	<li>username: {{ user.username }}</li>
+	<li>first name: {{ user.profile.first_name }}</li>
+	<li>middle name: {{ user.profile.mid_name }}</li>
+	<li>last name: {{ user.profile.last_name }}</li>
+	<li>dob: {{ user.profile.dob }}</li>
+	<li>status: {{ user.profile.usr_stat }}</li>
+	<li>phone number: {{ user.profile.phone_number }}</li>
+	<li>address: {{ user.profile.address }}</li>
+	<li>country: {{ user.profile.country }}</li>
+	<li>state: {{ user.profile.state }}</li>
+	<li>city: {{ user.profile.city }}</li>
+	<li>zip code: {{ user.profile.zip_code }}</li>
+	<li>sex: {{ user.profile.sex }}</li>
+	<li>race/ ethnicity: {{ user.profile.race_ethnicity }}</li>
+	<li>employment: {{ user.profile.employment }}</li>
+	<li>education: {{ user.profile.education }}</li>
+	<li>degree: {{ user.profile.degree }}</li>
+	<li>university: {{ user.profile.university }}</li>
+	<li>live/ online: {{ user.profile.live_online }}</li>
+	<li>classroom: {{ user.profile.classroom }}</li>
+	<li></li>
+	<li></li>
+</ul>
 
-{#<div class="col s12 m8 offset-m2">#}
-{#      <div class="card">#}
-{#        <div class="card-content">#}
-{#        <h2 class="flow-text">update your information</h2>#}
-{#          <form action="." method="POST" class="padding">#}
-{#	          {% csrf_token %}#}
-{#	          {{ noodle_form.as_p }}#}
-{#            <div class="divider"></div>#}
-{#                {{ formset.management_form }}#}
-{#                {{ formset.as_p }}#}
-{#            <button type="submit" class="btn-floating btn-large waves-light waves-effect"><i class="large material-icons">done</i></button>#}
-{#            <a href="#" onclick="window.history.back(); return false;" title="Cancel" class="btn-floating waves-effect waves-light red"><i class="material-icons">history</i></a>#}
-{#        </form>#}
-{#        </div>#}
-{#    </div>#}
-{#</div>#}
+<div class="col s12 m8 offset-m2">
+      <div class="card">
+        <div class="card-content">
+        <h2 class="flow-text">update your information</h2>
+          <form action="." method="POST" class="padding">
+	          {% csrf_token %}
+	          {{ noodle_form.as_p }}
+            <div class="divider"></div>
+                {{ formset.management_form }}
+                {{ formset.as_p }}
+            <button type="submit" class="btn-floating btn-large waves-light waves-effect"><i class="large material-icons">done</i></button>
+            <a href="#" onclick="window.history.back(); return false;" title="Cancel" class="btn-floating waves-effect waves-light red"><i class="material-icons">history</i></a>
+        </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
