@@ -40,10 +40,10 @@ def create_profile(request):
 		if user_form.is_valid() and profile_form.is_valid():
 			user_form.save()
 			profile_form.save()
-			messages.success(request, _('profile successfully updated!'))
+			messages.success(request, 'profile successfully updated!')
 			return redirect('settings:profile')
 		else:
-			messages.error(request, _('please correct error below.'))
+			messages.error(request, 'please correct error below.')
 	else:
 		user_form = CustomUser(instance=request.user)
 		profile_form = RegistrationForm(instance=request.user.profile)
@@ -105,10 +105,10 @@ def update_profile(request):
 		profile_form = RegistrationForm(request.POST, instance=request.user.profile)
 		if profile_form.is_valid():
 			profile_form.save()
-			messages.success(request, _('profile successfully updated!'))
+			messages.success(request, 'profile successfully updated!')
 			return redirect('settings:profile_update_success')
 		else:
-			messages.error(request, _('please correct error below.'))
+			messages.error(request, 'please correct error below.')
 	else:
 		profile_form = RegistrationForm(instance=request.user.profile)
 	return render(request, 'accounts/profile_update_success.html', {
