@@ -8,12 +8,12 @@
 
 <h2>{{ user.get_full_name }}</h2>
 
-<form method="post">
-	{% csrf_token %}
-	{{ user_form.as_p }}
-	{{ profile_form.as_p }}
-	<button type="submit">save changes</button>
-</form>
+<!--<form method="post">-->
+	<!--{% csrf_token %}-->
+	<!--{{ user_form.as_p }}-->
+	<!--{{ profile_form.as_p }}-->
+	<!--<button type="submit">save changes</button>-->
+<!--</form>-->
 
 <ul>
 	<li>username: {{ user.username }}</li>
@@ -45,13 +45,14 @@
         <div class="card-content">
         <h2 class="flow-text">update your information</h2>
           <form action="." method="POST" class="padding">
-	          {% csrf_token %}
-	          {{ noodle_form.as_p }}
-            <div class="divider"></div>
-                {{ formset.management_form }}
-                {{ formset.as_p }}
-            <button type="submit" class="btn-floating btn-large waves-light waves-effect"><i class="large material-icons">done</i></button>
-            <a href="#" onclick="window.history.back(); return false;" title="Cancel" class="btn-floating waves-effect waves-light red"><i class="material-icons">history</i></a>
+	          <!--{% csrf_token %}-->
+	          <!--{{ noodle_form.as_p }}-->
+            <!--<div class="divider"></div>-->
+                <!--{{ formset.management_form }}-->
+                <!--{{ formset.as_p }}-->
+	          <a class="btn btn-primary btn-lg" href="{% url 'accounts:signup2' %}" role="button">update?</a>
+            <!--<button type="submit" class="btn-floating btn-large waves-light waves-effect"><i class="large material-icons">done</i></button>-->
+            <!--<a href="#" onclick="window.history.back(); return false;" title="Cancel" class="btn-floating waves-effect waves-light red"><i class="material-icons">history</i></a>-->
         </form>
         </div>
     </div>

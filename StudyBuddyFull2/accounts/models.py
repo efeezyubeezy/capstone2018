@@ -8,7 +8,7 @@ from django.db.models import CASCADE
 from django.db.models.signals import post_save
 from django.urls import reverse
 
-from django.contrib.auth.models import AbstractUser, UserManager, User
+from django.contrib.auth.models import AbstractUser, UserManager
 
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -24,7 +24,7 @@ class CustomUser(AbstractUser):
 	objects = CustomUserManager()
 
 	def __str__(self):
-		return self.email
+		return self.username
 
 	def is_valid(self):
 		pass

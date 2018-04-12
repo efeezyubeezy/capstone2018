@@ -11,15 +11,17 @@ class CustomUserInline(admin.StackedInline):
 	model = Profile
 	can_delete = False
 	verbose_name_plural = 'Profile'
-	fields = ['accounts.CustomUser', ]
 
 
 class CustomUserAdmin(UserAdmin):
 	inlines = (CustomUserInline, )
-	model = CustomUser, Profile
+	model = CustomUser
+	can_delete = False
 	add_form = CustomUserCreationForm
 	form = CustomUserChangeForm
-	list_display = ('username', 'email',
+	list_display = ('username', 'first_name', 'last_name',
+	                'email', 'id', 'password',
+	                'last_login', 'date_joined',
 	                )
 
 	list_select_related = ('profile',)
@@ -31,4 +33,4 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.register(Profile)
+# admin.site.register(Profile)
