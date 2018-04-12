@@ -33,7 +33,7 @@ class CustomUser(AbstractUser):
 class Profile(models.Model):
 	objects = CustomUserManager()
 
-	username = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
 
 	first_name = models.CharField(blank=True, max_length=50, default='')
 	mid_name = models.CharField(blank=True, max_length=50, default='')
@@ -64,7 +64,7 @@ class Profile(models.Model):
 	                                 null=True)
 
 	def __str__(self):
-		return self.username
+		return self.user.username
 
 	def is_valid(self):
 		pass
@@ -74,19 +74,19 @@ class Profile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
 	if created:
 		Profile.objects.create(user=instance)
-	if not created:
-		return
-	Profile.objects.create(user=instance)
-	post_save.connect(create_user_profile, sender=settings.AUTH_USER_MODEL)
+	# if not created:
+	# 	return
+	# Profile.objects.create(user=instance)
 
 
-@receiver(post_save, sender=settings.AUTH_USER_MODEL, dispatch_uid='save_new_user_profile')
-def save_user_profile(sender, instance, created, **kwargs):
-	user = instance
-	if created:
-		profile = Profile(user=user)
-		profile.save()
-	instance.profile.save()
+# @receiver(post_save, sender=settings.AUTH_USER_MODEL, dispatch_uid='save_new_user_profile')
+# def save_user_profile(sender, instance, created, **kwargs):
+# 	user = instance
+# 	if created:
+# 		profile = Profile(user=user)
+# 		profile.save()
+# 	instance.profile.save()
 
 
 users = CustomUser.objects.all().select_related('profile')
+post_save.connect(create_user_profile, sender=settings.AUTH_USER_MODEL)

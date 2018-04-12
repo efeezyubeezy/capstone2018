@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from .forms import CustomUserCreationForm, CustomUserChangeForm, RegistrationForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser, Profile
 
 
@@ -11,17 +11,15 @@ class CustomUserInline(admin.StackedInline):
 	model = Profile
 	can_delete = False
 	verbose_name_plural = 'Profile'
-	# fk_name = settings.AUTH_USER_MODEL
 	fields = ['accounts.CustomUser', ]
 
 
 class CustomUserAdmin(UserAdmin):
 	inlines = (CustomUserInline, )
-	model = CustomUser
+	model = CustomUser, Profile
 	add_form = CustomUserCreationForm
 	form = CustomUserChangeForm
 	list_display = ('username', 'email',
-
 	                )
 
 	list_select_related = ('profile',)

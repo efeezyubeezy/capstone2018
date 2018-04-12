@@ -1,3 +1,6 @@
+import string
+
+import random
 from django.contrib import messages
 from django.db import transaction
 from django.shortcuts import render, redirect
@@ -68,6 +71,7 @@ class ProfileView(TemplateView):
 		user.profile.live_online = ''
 		user.profile.classroom = ''
 		user.profile.profile_image = ''
+
 		user.save()
 
 
