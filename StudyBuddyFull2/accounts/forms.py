@@ -30,7 +30,11 @@ class RegistrationForm(forms.ModelForm):
 	class Meta:
 		model = CustomUser
 		user = CustomUser
-		fields = ()
+		fields = ['first_name', 'mid_name', 'last_name', 'dob',
+				  'usr_stat', 'phone_number', 'address', 'country',
+				  'state', 'city', 'zip_code', 'sex', 'race_ethnicity',
+				  'employment', 'education', 'degree', 'university',
+				  'live_online', 'classroom', 'profile_image', ]
 
 	USRTYPE = [('S', 'student'),
 	           ('T', 'tutor')]

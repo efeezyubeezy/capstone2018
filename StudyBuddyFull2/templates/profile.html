@@ -12,7 +12,7 @@
       <div class="card">
         <div class="card-content">
         <h2 class="flow-text">update your information</h2>
-          <form action="." method="POST" class="padding">
+          <!--<form action="." method="post" class="padding">-->
 			<ul>
 				<li>username: {{ user.username }}</li>
 				<li>first name: {{ user.profile.first_name }}</li>
@@ -38,7 +38,7 @@
 				<li></li>
 			</ul>
 	          <a class="btn btn-primary btn-lg" href="{% url 'accounts:profile_update' user.profile.id %}" role="button">update?</a>
-        </form>
+        <!--</form>-->
         </div>
     </div>
 </div>

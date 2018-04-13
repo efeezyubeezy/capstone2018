@@ -74,18 +74,6 @@ class Profile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
 	if created:
 		Profile.objects.create(user=instance)
-	# if not created:
-	# 	return
-	# Profile.objects.create(user=instance)
-
-
-# @receiver(post_save, sender=settings.AUTH_USER_MODEL, dispatch_uid='save_new_user_profile')
-# def save_user_profile(sender, instance, created, **kwargs):
-# 	user = instance
-# 	if created:
-# 		profile = Profile(user=user)
-# 		profile.save()
-# 	instance.profile.save()
 
 
 users = CustomUser.objects.all().select_related('profile')
